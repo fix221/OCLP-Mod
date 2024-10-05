@@ -1,7 +1,7 @@
 <div align="center">
              <img src="docs/images/OC-Patcher.png" alt="OpenCore Patcher Logo" width="256" />
              <h1>OCLP-Mod</h1>
-  <a href="https://github.com/laobamac/OCLP-Mod/blob/main/README.md">English</a><a href="https://github.com/laobamac/OCLP-Mod/blob/main/README_CN.md">中文</a>
+  <a href="https://github.com/laobamac/OCLP-Mod/blob/main/README.md">English</a>  <a href="https://github.com/laobamac/OCLP-Mod/blob/main/README_CN.md">中文</a>
 </div>
 
 A Mod version [OCLP-Mod](https://github.com/laobamac/OCLP-Mod) which based on  Python-based project revolving around [Acidanthera's OpenCorePkg](https://github.com/acidanthera/OpenCorePkg) and [Lilu](https://github.com/acidanthera/Lilu) for both running and unlocking features in macOS on supported and unsupported Macs.
