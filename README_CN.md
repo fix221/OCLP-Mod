@@ -44,8 +44,8 @@
 ## 致谢
 
 * [Acidanthera](https://github.com/Acidanthera)
-  * OpenCorePkg，以及许多核心 kext 和工具
+  * OpenCorePkg，以及许多内核扩展和工具
 * [Dortania](https://github.com/dortania) 和 OpenCore Legacy Patcher 贡献者
   * OpenCore-Legacy-Patcher
 * Apple
-  * 为 macOS 以及我们重新实现到较新操作系统中的许多 kext、框架和其他二进制文件
+  * 为 macOS 以及我们重新实现到较新操作系统中的许多内核扩展、框架和其他二进制文件
