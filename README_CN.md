@@ -1,7 +1,7 @@
 <div align="center">
              <img src="docs/images/OC-Patcher.png" alt="OpenCore Patcher Logo" width="256" />
              <h1>OCLP-Mod</h1>
-  <a href="https://github.com/laobamac/OCLP-Mod/blob/main/README.md">English</a><a href="https://github.com/laobamac/OCLP-Mod/blob/main/README_CN.md">中文</a>
+  <a href="https://github.com/laobamac/OCLP-Mod/blob/main/README.md">English</a>  <a href="https://github.com/laobamac/OCLP-Mod/blob/main/README_CN.md">中文</a>
 </div>
 <br>
 
