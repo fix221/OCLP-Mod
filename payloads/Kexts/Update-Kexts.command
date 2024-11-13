@@ -6,7 +6,7 @@ from pathlib import Path
 import requests
 import packaging.version
 import tempfile
-
+import random
 
 # For kexts with basic handling requirements
 KEXT_DICTIONARY = {
@@ -233,7 +233,9 @@ class GenerateKexts:
                     local_version = local_version[1:]
                 return local_version[:5]
 
-        raise Exception(f"Could not find local version for {kext_name} {variant}")
+        # raise Exception(f"Could not find local version for {kext_name} {variant}")
+        print(f"  Could not find local version for {kext_name} {variant}, assuming 0.0.0")
+        return "0.0.0"
 
 
     def _download_file(self, url, file_path, file):
@@ -242,6 +244,9 @@ class GenerateKexts:
             os.remove(file_path)
 
         with tempfile.TemporaryDirectory() as temp_dir:
+            github_mirror_urls = ["https://ghp.ci/","https://github.moeyy.xyz/","https://ghproxy.cc/","https://ghproxy.net/","https://cf.ghproxy,cc/"]
+            url = random.choice(github_mirror_urls) + url
+            print(f"  Downloading {file} from {url}...")
             download = requests.get(url)
             with open(f"{temp_dir}/temp.zip", "wb") as f:
                 f.write(download.content)

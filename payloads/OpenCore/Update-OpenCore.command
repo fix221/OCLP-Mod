@@ -11,6 +11,7 @@
 import subprocess
 from pathlib import Path
 import requests
+import random
 
 REPO_URL = "https://api.github.com/repos/acidanthera/OpenCorePkg/releases/latest"
 
@@ -144,7 +145,7 @@ class GenerateOpenCore:
                         stdout=subprocess.PIPE, stderr=subprocess.PIPE
                     )
 
-            # Remove root folder
+            # Remove root folder.
             subprocess.run (
                 ["/bin/rm", "-rf", f"{self.working_dir}/OpenCore-{variant}-ROOT"],
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE
@@ -163,17 +164,27 @@ class GenerateOpenCore:
             stdout=subprocess.PIPE, stderr=subprocess.PIPE
         )
 
+    def _get_local_version(self, variant):
+        if variant == "DEBUG":
+            return self.debug_zip.name.split("-")[1]
+        elif variant == "RELEASE":
+            return self.release_zip.name.split("-")[1]
+        else:
+            return None
+
     def download_new_binaries(self, variant):
         # Get latest release
         print(f"Getting latest {variant}...")
         latest_release = requests.get(REPO_URL).json()
-
+        github_mirror_urls = ["https://ghp.ci/","https://github.moeyy.xyz/","https://ghproxy.cc/","https://ghproxy.net/","https://cf.ghproxy,cc/"]
         # Get latest release download url
         print(f"   Getting latest {variant} download url...")
         for asset in latest_release["assets"]:
             if asset["name"].endswith(f"{variant}.zip"):
                 download_url = asset["browser_download_url"]
+                download_url = random.choice(github_mirror_urls) + download_url
                 print(f"   Download url: {download_url}")
+                # print(download_url)
                 break
 
         if variant == "DEBUG":
@@ -183,8 +194,9 @@ class GenerateOpenCore:
         else:
             raise ValueError("Invalid variant!")
 
-        # Download latest release
+        # Download latest release_with_mirror_url
         print(f"   Downloading latest {variant}...")
+        
         download = requests.get(download_url)
         with open(f"{self.working_dir}/{asset['name']}", "wb") as f:
             f.write(download.content)
